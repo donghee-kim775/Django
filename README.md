@@ -1,8 +1,8 @@
 # Django
 ## 1. 환경구축
 ---
-anconda
+Anaconda
 
-'''
+'''bash
 conda create -n django_env python=3.6 django
 '''
