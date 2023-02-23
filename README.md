@@ -3,5 +3,6 @@
 ---
 Anaconda
 
-'conda create -n django_env python=3.6 django'
+> conda create -n django_env python=3.6 django
+
 
