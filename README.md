@@ -20,6 +20,7 @@ conda create -n django_env python=3.6 django
 
 
 장고 프로젝트 내용물 확인
+---
 C:~~\Project\mysite
 - config\
   - asgi.py
@@ -27,7 +28,7 @@ C:~~\Project\mysite
   - urls.py
   - wsgi.py
   - __init__.py  
--manage.py
+- manage.py
 
 ---
 ## 3. 개발 서버 구동
