@@ -19,7 +19,7 @@ conda create -n django_env python=3.6 django
 ~~~
 
 ---
-## 2. 개발 서버 구동
+## 3. 개발 서버 구동
 
 ~~~
 (django_env) C:~~\Project\mysite> python manage.py runserver
