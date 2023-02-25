@@ -47,4 +47,4 @@ LANGUAGE_CODE = 'ko-kr'
 TIME_ZONE = 'Asia/Seoul'
 (...생략...)
 ~~~
-언어와 시간을 한국 값으로 
+언어와 시간을 한국 값으로 바꾸어진다.
