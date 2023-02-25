@@ -13,6 +13,7 @@
 ~~~
 
 ### pybo 앱 구성
+
 C:~~\Project\mysite\pybo
 - migrations\
   - __init__.py  
@@ -32,3 +33,21 @@ C:~~\Project\mysite\pybo
 장고는 사용자가 웹 브라우저에서 /pybo/라는 페이지를 요청하면 해당 페이지를 가져오는 URL 매핑이 있는지 config/urls.py파일을 찾아본다.
 하지만 우리는 /pybo/ 페이지에 해당하는 URL매핑을 장고에 등록하지 않아서 그렇다.
 그래서 장고는 /pybo/ 페이지를 찾을 수 없다고 메시지를 보낸 것이다.
+
+---
+
+## config/urls.py 수정하기
+
+~~~ python
+from django.contrib import admin
+from django.urls import path
+from pybo import views # 추가됨
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('pybo/', views.index), # 추가됨
+]
+~~~
+> 이렇게 추가하는 행위를 'URL 매핑을 추가한다'라고 말할 것이다.
+
+config/urls.py은 페이지 요청시 가장 먼저 호출되며, 요청 URL과 뷰함수를 1:1로 연결해줌
