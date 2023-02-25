@@ -1,50 +1,22 @@
-# Django
-
-## Anaconda
-> 환경구축
-
-## 1. 환경 생성
-
-~~~
-conda create -n django_env python=3.6 django
-~~~
-
+# 개요
+1장에서는 mysite프로젝트를 생성했다. 프로젝트에는 장고가 제공하는 기본 앱과 개발자가 직접 만든 앱이 포함될 수 있다.
+장고에서 말하는 '앱'은 안드로이드 앱과 성격이 다르다
+장고의 앱이란 무엇일까? 우리의 파이보 서비스에 필요한 pybo앱을 만들어보며 알아보자.
 ---
-## 2. 프로젝트 생성
+
+## pybo 앱 생성하기
 
 ~~~
-(django_env) C:~~\Project> mkdir
-(django_env) C:~~\Project> cd mysite
-(django_env) C:~~\Project\mysite> django-admin startprojectt config .
+(django_env) C:~~\Project\mysite> django-admin startapp pybo
 ~~~
 
-
-장고 프로젝트 내용물 확인
----
-C:~~\Project\mysite
-- config\
-  - asgi.py
-  - settings.py
-  - urls.py
-  - wsgi.py
+### pybo 앱 구성
+C:~~\Project\mysite\pybo
+- migrations\
   - __init__.py  
-- manage.py
-
----
-## 3. 개발 서버 구동
-
-~~~
-(django_env) C:~~\Project\mysite> python manage.py runserver
-~~~
-
----
-## 4. settings.py 파일 수정하기
-
-~~~
-(...생략...)
-LANGUAGE_CODE = 'ko-kr'
-
-TIME_ZONE = 'Asia/Seoul'
-(...생략...)
-~~~
-언어와 시간을 한국 값으로 바꾸어진다.
+- __intit__.py
+- admin.py
+- apps
+- models
+- tests
+- views
