@@ -36,3 +36,14 @@ C:~~\Project\mysite
 ~~~
 (django_env) C:~~\Project\mysite> python manage.py runserver
 ~~~
+
+---
+## 4. settings.py 파일 수정하기
+
+~~~
+(...생략...)
+LANGUAGE_CODE = 'ko-kr'
+
+TIME_ZONE = 'Asia/Seoul'
+(...생략...)
+~~~
