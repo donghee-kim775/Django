@@ -79,3 +79,17 @@ return문에 사용된 HttpResponse는 페이지 요청에 대한 응답을 할 
 여기서 HttpResponse에 "안녕하세요 pybo에 오신것을 환영합니다."라는 문자열을 전달하여 이 문자열이 웹 브라우저에 그대로 출력되도록 만들었다.
 
 index 함수의 매개변수 request는 HTTP요청 객체이다.
+
+이후 다시 접속하면 웹브라우저에 "안녕하세요 pybo에 오신것을 환영합니다."라는 문자열이 출력된다.
+
+---
+
+## URL 분리하기
+
+config/urls.py 파일을 다시 한번 살펴보자.
+
+아까 얘기했듯 pybo 앱 관련 파일은 대부분 pybo 디렉터리에 있다. 하지만 config/urls.py 파일은 pybo 디렉터리에 없다.
+
+그러므로 pybo앱에 URL 매핑을 추가하려면 pybo 디렉터리가 아닌 config 디렉터리에 있는 urls.py 파일을 수정해야 한다.
+
+-> 이 방법은 pybo앱에서만 사용하는 URL 매핑을 config/urls.py 파일에 계속 추가하는 것은 좋은 방법이 아니다.
