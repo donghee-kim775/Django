@@ -48,6 +48,21 @@ urlpatterns = [
     path('pybo/', views.index), # 추가됨
 ]
 ~~~
-> 이렇게 추가하는 행위를 'URL 매핑을 추가한다'라고 말할 것이다.
+> 이렇게 추가하는 행위를 __'URL 매핑을 추가한다'__라고 말할 것이다.
 
 config/urls.py은 페이지 요청시 가장 먼저 호출되며, 요청 URL과 뷰함수를 1:1로 연결해줌
+__pybo/ URL이 요청되면 views.index를 호출하라는 매핑을 urlpatterns에 추가하였다.__
+__views.index는 view.py파일의 index 함수를 의미한다.__
+
+웹 브라우저 주소창에 localhost:8000/pybo라고 입력하면 장고가 자동으로 localhost:8000/pybo/와 같이 /를 붙여준다.
+
+그럼 다시 한번 /pybo/에 접속하면 
+---
+
+## views.py 수정하기
+
+~~~python
+from django.http import HttpResponse
+def index(request):
+  return HttpResponse("안녕하세요 pybo에 오신것을 환영합니다.")
+~~~
