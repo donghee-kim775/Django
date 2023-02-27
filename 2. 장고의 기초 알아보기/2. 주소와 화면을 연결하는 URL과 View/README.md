@@ -48,6 +48,34 @@ urlpatterns = [
     path('pybo/', views.index), # 추가됨
 ]
 ~~~
-> 이렇게 추가하는 행위를 'URL 매핑을 추가한다'라고 말할 것이다.
+이렇게 추가하는 행위를 __'URL 매핑을 추가한다'__ 라고 말할 것이다.
 
 config/urls.py은 페이지 요청시 가장 먼저 호출되며, 요청 URL과 뷰함수를 1:1로 연결해줌
+
+__pybo/ URL이 요청되면 views.index를 호출하라는 매핑을 urlpatterns에 추가하였다.__
+__views.index는 view.py파일의 index 함수를 의미한다.__
+
+웹 브라우저 주소창에 localhost:8000/pybo라고 입력하면 장고가 자동으로 localhost:8000/pybo/와 같이 /를 붙여준다.
+
+그럼 다시 한번 /pybo/에 접속하면 '사이트를 연결할 수 없음'라고 오류가 뜬다.
+
+그 이유는 URL 매핑에 추가한 뷰 함수 views.index가 없기 때문이다.
+
+---
+
+## views.py 수정하기
+
+pybo/views.py 파일에 index함수를 추가해보자.
+
+~~~python
+from django.http import HttpResponse
+
+def index(request):
+  return HttpResponse("안녕하세요 pybo에 오신것을 환영합니다.")
+~~~
+
+return문에 사용된 HttpResponse는 페이지 요청에 대한 응답을 할 때 사용하는 장고 클래스이다.
+
+여기서 HttpResponse에 "안녕하세요 pybo에 오신것을 환영합니다."라는 문자열을 전달하여 이 문자열이 웹 브라우저에 그대로 출력되도록 만들었다.
+
+index 함수의 매개변수 request는 HTTP요청 객체이다.
