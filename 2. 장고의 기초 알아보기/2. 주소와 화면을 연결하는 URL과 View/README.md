@@ -77,3 +77,5 @@ def index(request):
 return문에 사용된 HttpResponse는 페이지 요청에 대한 응답을 할 때 사용하는 장고 클래스이다.
 
 여기서 HttpResponse에 "안녕하세요 pybo에 오신것을 환영합니다."라는 문자열을 전달하여 이 문자열이 웹 브라우저에 그대로 출력되도록 만들었다.
+
+index 함수의 매개변수 request는 HTTP요청 객체이다.
