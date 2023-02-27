@@ -48,9 +48,10 @@ urlpatterns = [
     path('pybo/', views.index), # 추가됨
 ]
 ~~~
-> 이렇게 추가하는 행위를 __'URL 매핑을 추가한다'__라고 말할 것이다.
+이렇게 추가하는 행위를 __'URL 매핑을 추가한다'__ 라고 말할 것이다.
 
 config/urls.py은 페이지 요청시 가장 먼저 호출되며, 요청 URL과 뷰함수를 1:1로 연결해줌
+
 __pybo/ URL이 요청되면 views.index를 호출하라는 매핑을 urlpatterns에 추가하였다.__
 __views.index는 view.py파일의 index 함수를 의미한다.__
 
