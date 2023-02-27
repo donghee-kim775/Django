@@ -14,10 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from pybo import views
+from django.urls import path, include # include 추가
+# from pybo import views 더 이상 필요하지 않으므로 삭제
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('pybo/', views.index),
+    path('pybo/', include('pybo.urls')), # 수정한 곳
 ]
