@@ -95,6 +95,9 @@ config/urls.py 파일을 다시 한번 살펴보자.
 -> 이 방법은 pybo앱에서만 사용하는 URL 매핑을 config/urls.py 파일에 계속 추가하는 것은 좋은 방법이 아니다.
 
 우선 config/urls.py를 다음처럼 수정해보자.
+
+## config/urls.py 수정
+
 ~~~python
 from django.contrib import admin
 from django.urls import path, include # include 추가
