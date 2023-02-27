@@ -6,7 +6,7 @@
 
 ---
 
-## pybo 앱 생성하기
+# pybo 앱 생성하기
 
 ~~~
 (django_env) C:~~\Project\mysite> django-admin startapp pybo
@@ -84,7 +84,7 @@ index 함수의 매개변수 request는 HTTP요청 객체이다.
 
 ---
 
-## URL 분리하기
+# URL 분리하기
 
 config/urls.py 파일을 다시 한번 살펴보자.
 
@@ -126,7 +126,6 @@ urlpatterns = [
 config/urls.py 파일에 설정했던 내용과 별반 차이 없다.
 
 다만 path('', views.index)처럼 pybo/가 생략된 ''이 사용되었다.
-
 
 이유는?
 
