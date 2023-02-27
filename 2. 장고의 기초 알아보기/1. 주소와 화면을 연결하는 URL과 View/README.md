@@ -130,3 +130,13 @@ config/urls.py 파일에 설정했던 내용과 별반 차이 없다.
 이유는?
 
 config/urls.py 파일에서 이미 pybo/로 시작하는 URL이 pybo/urls.py 파일과 먼저 매핑되었기 때문이다.
+
+즉, pybo/ URL은 다음처럼 config/urls.py파일에 매핑된 pybo/와 pybo/urls.py 파일에 매핑된 ''이 더해져 pybo/가 된다.
+
+---
+
+config/urls.py(pybo/) + pybo/urls.py('') = 최종 URL('pybo/')
+
+config/urls.py(pybo/) + pybo/urls.py('question/create/') = 최종 URL('pybo/question/create/')
+
+이제 다시 http://localhost:8000/pybo 페이지를 요청하면 URL 분리후에도 동일한 결과가 나타난 것을 확인할 수 있다.
