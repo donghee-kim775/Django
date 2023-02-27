@@ -6,7 +6,7 @@
 
 ---
 
-## pybo 앱 생성하기
+# pybo 앱 생성하기
 
 ~~~
 (django_env) C:~~\Project\mysite> django-admin startapp pybo
@@ -84,7 +84,7 @@ index 함수의 매개변수 request는 HTTP요청 객체이다.
 
 ---
 
-## URL 분리하기
+# URL 분리하기
 
 config/urls.py 파일을 다시 한번 살펴보자.
 
@@ -93,3 +93,53 @@ config/urls.py 파일을 다시 한번 살펴보자.
 그러므로 pybo앱에 URL 매핑을 추가하려면 pybo 디렉터리가 아닌 config 디렉터리에 있는 urls.py 파일을 수정해야 한다.
 
 -> 이 방법은 pybo앱에서만 사용하는 URL 매핑을 config/urls.py 파일에 계속 추가하는 것은 좋은 방법이 아니다.
+
+우선 config/urls.py를 다음처럼 수정해보자.
+
+## config/urls.py 수정
+
+~~~python
+from django.contrib import admin
+from django.urls import path, include # include 추가
+# from pybo import views 더 이상 필요하지 않으므로 삭제
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('pybo/', include('pybo.urls')), # 수정한 곳
+]
+~~~
+
+path('pybo/', include('pybo.urls'))의 의미는 pybo/로 시작하는 페이지를 요청하면 이제 pybo/urls.py 파일의 매핑 정보를 읽어서 처리하라는 의미이다.
+
+따라서 이제 pybo/question/create, pybo/answer/create등의 pybo/로 시작하는 URL을 추가해야할 때 config/urls.py 파일을 수정할 필요 없이 pybo/urls.py 파일만 수정하면 된다.
+
+그렇다면 이제 pybo/urls.py파일을 생성해야한다.
+
+## pybo/urls.py 생성
+
+~~~python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+  path('',views.index),
+]
+~~~
+
+config/urls.py 파일에 설정했던 내용과 별반 차이 없다.
+
+다만 path('', views.index)처럼 pybo/가 생략된 ''이 사용되었다.
+
+이유는?
+
+config/urls.py 파일에서 이미 pybo/로 시작하는 URL이 pybo/urls.py 파일과 먼저 매핑되었기 때문이다.
+
+즉, pybo/ URL은 다음처럼 config/urls.py파일에 매핑된 pybo/와 pybo/urls.py 파일에 매핑된 ''이 더해져 pybo/가 된다.
+
+---
+
+config/urls.py(pybo/) + pybo/urls.py('') = 최종 URL('pybo/')
+
+config/urls.py(pybo/) + pybo/urls.py('question/create/') = 최종 URL('pybo/question/create/')
+
+이제 다시 http://localhost:8000/pybo 페이지를 요청하면 URL 분리후에도 동일한 결과가 나타난 것을 확인할 수 있다.
