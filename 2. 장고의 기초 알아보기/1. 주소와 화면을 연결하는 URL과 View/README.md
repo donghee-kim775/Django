@@ -109,7 +109,7 @@ urlpatterns = [
 ]
 ~~~
 
-path('pybo/', include('pybo.urls'))의 의미는 pybo/로 시작하는 페이지를 요청하면 이제 pybo/urls.py 파일의 매핑 정보를 읽어서 처리하라는 의미이다.
+__path('pybo/', include('pybo.urls'))의 의미는 pybo/로 시작하는 페이지를 요청하면 이제 pybo/urls.py 파일의 매핑 정보를 읽어서 처리하라는 의미이다.__
 
 따라서 이제 pybo/question/create, pybo/answer/create등의 pybo/로 시작하는 URL을 추가해야할 때 config/urls.py 파일을 수정할 필요 없이 pybo/urls.py 파일만 수정하면 된다.
 
