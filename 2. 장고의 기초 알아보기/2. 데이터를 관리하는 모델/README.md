@@ -28,7 +28,9 @@ Run 'python manage.py migrate' to apply them.
 
 >중간에 __You have 18 unapplied migration(s).('아직 적용되지 않은 18개의 migration이 있다')__ 고 한다.
 
-->migration이 무엇인지 아직 정확히는 모른다. 하지만 이 경고 메세지는 admin, auth, contenttypes, sessions앱과 관련된 내용이다.
+-> migration이 무엇인지 아직 정확히는 모른다. 하지만 이 경고 메세지는 admin, auth, contenttypes, sessions앱과 관련된 내용이다.
+
+-> __migrations란?__ 모델의 변경 내역을 DB * 스키마에 적용시키는 장고의 방법
 
 > __Run 'python manage.py migrate' to apply them.__
 
