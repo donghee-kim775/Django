@@ -79,4 +79,8 @@ DATABASES = {
 (... 생략 ...)
 ~~~
 
-DATABASES 설정 중 default의 'ENGINE' 항목을 보면 데이터베이스 엔진이 django.db.backends.sqlite3로 정의 되어있다.
+DATABASES 설정 중 default의 __'ENGINE'__ 항목을 보면 데이터베이스 엔진이 __django.db.backends.sqlite3__ 로 정의 되어있다.
+
+그리고  __'NAME'__ 항목을 보면 데이터베이스는 __BASE_DIR__ 에 있는 __db.sqlite3__ 파일에 저장되는 것도 알 수 있다.
+
+> SQLite는 소규모 프로젝트에서 사용되는 가벼운 데이터 베이스이다. 서비스로 제공할 때 운영 환경에 어울리는 데이터베이스로 바꾼다.
