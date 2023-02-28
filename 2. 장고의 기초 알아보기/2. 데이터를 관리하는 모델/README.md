@@ -143,3 +143,52 @@ migrate를 수행하면 admin, auth, concenttypes, sessions 앱들이 사용하�
 - content : 답변의 내용
 - create_date : 답변을 작성한 일시
 
+### pybo/models.py에 질문/ 답변 모델 작성하기
+
+~~~python
+from django.db import models
+
+# Question Model
+class Question(models.Model):
+    # 질문의 제목
+    subject = models.CharField(max_length=200)
+    # 질문의 내용
+    content = models.TextField()
+    # 작성일시
+    create_date = models.DateTimeField()
+
+# Answer Model
+class Answer(models.Model):
+    # 질문
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    # 답변의 내용
+    content = models.TextField()
+    # 답변을 작성한 일시
+    create_date = models.DateTimeField()
+~~~
+
+### Question Model
+- subject(질문의 제목)
+    - CharField : 제목처럼 글자수의 길이가 제한된 텍스트
+    
+- content(질문의 내용)
+    - TextField : 내용처럼 글자수의 길이가 제한되지 않은 텍스트
+    
+- create_date(답변을 작성한 일시)
+
+### Answer Model
+- question(질문 / 어떤 질문의 답변인지 알아야 하므로 질문 속성이 필요)
+    - ForeignKey : 다른 모델과 연결하기 위해 사용
+    - on_delete=models.CASCADE : 이 답변과 연결된 질문(Question)이 삭제될 경우 답변(Answer)도 삭제된다. (질문 하나에는 무수히 많은 답변이 등록될 수 있기에)
+    
+- content(답변의 내용)
+    - TextField : 내용처럼 글자수의 길이가 제한되지 않은 텍스트
+    
+- create_date(답변을 작성한 일시)
+
+> 장고에서 사용하는 속성(Field)의 타입은 이것 외에도 많다. 다음 URL에서 어떤 것들이 있는지 참고하도록 하자.
+URL : https://docs.djangoproject.com/en/4.0/ref/models/fields/#field-types
+
+---
+## 테이블 생성하기
+
