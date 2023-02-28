@@ -132,3 +132,14 @@ migrate를 수행하면 admin, auth, concenttypes, sessions 앱들이 사용하�
 
 이제 pybo가 사용할 데이터 모델을 만들어 보자.
 > pybo에는 __질문과 답변__ 에 해당하는 데이터 모델이 있어야한다.
+
+### 질문 모델
+- subject : 질문의 제목
+- content : 질문의 내용
+- create_date : 질문을 작성한 일시
+
+### 답변 모델
+- question : 질문 (어떤 질문의 답변인지 알아야 하므로 질문 속성이 필요함)
+- content : 답변의 내용
+- create_date : 답변을 작성한 일시
+
