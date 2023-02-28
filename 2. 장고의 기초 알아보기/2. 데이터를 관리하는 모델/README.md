@@ -177,8 +177,11 @@ class Answer(models.Model):
 - create_date(답변을 작성한 일시)
 
 ### Answer Model
-- question(질문 / 어떤 질문의 답변인지 알아야 하므로 질문 속성이 필요)
-    - ForeignKey : 다른 모델과 연결하기 위해 사용
+Answer Model은어떤 질문에 대한 답변이므로 Question 모델을 속성으로 가져야 한다.
+
+- question(질문)
+이처럼 어떤 모델이 다른 모델을 속성으로 가지면 ForeignKey를 이용한다.
+- ForeignKey : 다른 모델과 연결하기 위해 사용
     - on_delete=models.CASCADE : 이 답변과 연결된 질문(Question)이 삭제될 경우 답변(Answer)도 삭제된다. (질문 하나에는 무수히 많은 답변이 등록될 수 있기에)
     
 - content(답변의 내용)
