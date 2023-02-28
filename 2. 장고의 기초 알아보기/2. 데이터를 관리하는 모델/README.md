@@ -60,3 +60,23 @@ INSTEAD_APPS는 현재 장고 프로젝트에 설치된 앱이다.
 
 경고 메시지에 언급되지 않은 messages, staticfiles 앱도 보일 것이다. 이 앱들은 데이터베이스와 상관 없으므로 경고 메시지에 언급되지 않은 것이다.
 
+> 데이터 베이스가 필요한 앱만 migrate가 필요하다.
+
+---
+
+## 3. config/settings.py에서 데이터 베이스 정보 살펴보기
+
+config/settings.py 파일을 잘 살펴보면 데이터베이스에 대한 정보도 정의되어 있다.
+
+~~~python
+(... 생략 ...)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+(... 생략 ...)
+~~~
+
+DATABASES 설정 중 default의 'ENGINE' 항목을 보면 데이터베이스 엔진이 django.db.backends.sqlite3로 정의 되어있다.
