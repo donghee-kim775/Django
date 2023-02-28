@@ -27,8 +27,10 @@ Run 'python manage.py migrate' to apply them.
 ~~~
 
 >중간에 __You have 18 unapplied migration(s).('아직 적용되지 않은 18개의 migration이 있다')__ 고 한다.
+
 ->migration이 무엇인지 아직 정확히는 모른다. 하지만 이 경고 메세지는 admin, auth, contenttypes, sessions앱과 관련된 내용이다.
 
 > Run 'python manage.py migrate' to apply them.
+
 -> 이 오류를 해결하려면 python manage.py migrate를 실행해야 한다는 안내는 확인할 수 있다.
 
