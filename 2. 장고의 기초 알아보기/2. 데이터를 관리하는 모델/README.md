@@ -34,3 +34,27 @@ Run 'python manage.py migrate' to apply them.
 
 -> 이 오류를 해결하려면 python manage.py migrate를 실행해야 한다는 안내는 확인할 수 있다.
 
+---
+
+## 2. config/settings.py 열어 기본으로 설치된 앱 확인하기
+
+그러면 경고 메세지에 표시된 앱은 어디서 확인할 수 있고, 왜 경고 메시지에 언급되었을까?
+
+그 이유는 config/settings.py 파일을 열어 보면 어느 정도 짐작할 수 있다. 파일을 열어 __INSTEAD_APPS__ 항목을 찾아보자
+~~~python
+(...생략...)
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+(...생략...)
+~~~
+
+INSTEAD_APPS는 현재 장고 프로젝트에 설치된 앱이다.
+
+경고 메시지에 언급되지 않은 messages, staticfiles 앱도 보일 것이다. 이 앱들은 데이터베이스와 상관 없으므로 경고 메시지에 언급되지 않은 것이다.
+
