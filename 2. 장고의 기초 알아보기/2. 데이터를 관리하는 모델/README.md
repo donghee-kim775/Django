@@ -193,5 +193,36 @@ Answer Model은어떤 질문에 대한 답변이므로 Question 모델을 속성
 URL : https://docs.djangoproject.com/en/4.0/ref/models/fields/#field-types
 
 ---
-## 테이블 생성하기
+## 6. 테이블 생성하기
 
+이전 단계에서 만든 모델을 이요하여 테이블을 생성하자.
+
+테이블 생성을 위해 가장 먼저 해야하는 일은 INSTALLED_APPS 항목에 pybo앱을 추가하는 일이다.
+
+### config/settings.py를 열어 pybo 앱 등록하기
+
+~~~python
+(... 생략 ...)
+INSTALLED_APPS = [
+    'pybo.apps.PyboConfig',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    (... 생략 ...)
+]
+(... 생략 ...)
+~~~
+
+INSTALLED_APPS에 추가한 pybo.apps.PyboConfig 클래스는 pybo/apps.py파일에 있는 클래스이다.
+
+### pybo/apps.py 살피기
+
+~~~python
+from django.apps import AppConfig
+
+class PyboConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'pybo'
+~~~
+
+> 이 파일에 정의된 PyboConfig클래스가 config/settings.py파일의 INSTEAD_APPS항목에 추가되지 않으면 장고는 pybo앱을 인식하지 못하고 데이터베이스 관련 작업도 할 수 없다는 사실이다.
+> 모델은 앱에 종속되어 있으므로 반드시 장고에 앱을 등록해야 테이블작업을 진행할 수 있다.
