@@ -6,9 +6,13 @@
 
 ---
 
-## 장고 앱 migrate
+# 장고 앱 migrate
 
-모델을 알아보기 위해 python manage.py runserver 명령 실행시 나오는 경고 메시지를 더 자세히 살표보자
+모델을 알아보기 위해 python manage.py runserver 명령 실행시 나오는 경고 메시지를 더 자세히 살펴보자.
+
+---
+
+## 1. 장고 개발 서버 구동시 나오는 경고 메세지 살펴보기
 
 ~~~
 (django_env) c:\projects\mysite>python manage.py runserver
@@ -17,7 +21,14 @@ Performing system checks...
 
 System check identified no issues (0 silenced).
 
-__You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.__
-__Run 'python manage.py migrate' to apply them.__
+You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
 ......
 ~~~
+
+>중간에 __You have 18 unapplied migration(s).('아직 적용되지 않은 18개의 migration이 있다')__ 고 한다.
+->migration이 무엇인지 아직 정확히는 모른다. 하지만 이 경고 메세지는 admin, auth, contenttypes, sessions앱과 관련된 내용이다.
+
+> Run 'python manage.py migrate' to apply them.
+-> 이 오류를 해결하려면 python manage.py migrate를 실행해야 한다는 안내는 확인할 수 있다.
+
