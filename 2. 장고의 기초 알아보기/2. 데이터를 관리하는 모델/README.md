@@ -225,4 +225,5 @@ class PyboConfig(AppConfig):
 ~~~
 
 > 이 파일에 정의된 PyboConfig클래스가 config/settings.py파일의 INSTEAD_APPS항목에 추가되지 않으면 장고는 pybo앱을 인식하지 못하고 데이터베이스 관련 작업도 할 수 없다는 사실이다.
+
 > 모델은 앱에 종속되어 있으므로 반드시 장고에 앱을 등록해야 테이블작업을 진행할 수 있다.
