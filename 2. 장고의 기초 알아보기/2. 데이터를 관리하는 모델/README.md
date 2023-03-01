@@ -227,3 +227,59 @@ class PyboConfig(AppConfig):
 > 이 파일에 정의된 PyboConfig클래스가 config/settings.py파일의 INSTEAD_APPS항목에 추가되지 않으면 장고는 pybo앱을 인식하지 못하고 데이터베이스 관련 작업도 할 수 없다는 사실이다.
 
 > 모델은 앱에 종속되어 있으므로 반드시 장고에 앱을 등록해야 테이블작업을 진행할 수 있다.
+
+### migrate로 테이블 생성하기
+
+우선 __python manage.py migrate__ 를 실행하려면?
+
+__모델이 새로 생성되거나 변경된 경우__ migrate 명령을 실행하려면 작업 파일이 필요하다.
+
+-> 테이블 작업을 만드는 명령어 : __python magage.py makemigrations__
+
+~~~
+(djang_env) c:\projects\mysite> python manage.py makemigrations
+Migrations for 'pybo':
+  pybo\migrations\0001_initial.py
+    - Create model Question
+    - Create model Answer
+~~~
+
+- makemigrations : 장고가 테이블 작업을 수행하기위한 파일들을 생성
+- migrate : 실제 테이블 생성
+
+makemigrations를 수행하게되면
+
+- mysite
+    - config
+    - pybo
+        - __migrations__
+            - __init__
+            - __0001_initial.py__
+
+라는 파일이 생긴다.
+
+makemigrations명령을 한번 더 실행해도 'No changes detected'라는 메시지가 뜬다.
+
+-> '모델 변경사항 없음'을 뜻함(모델 변경사항이 없다면)
+
+이후, python manage.py migrate를 실행하게 되면
+
+~~~
+(django_env) c:\projects\mysite> python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, pybo, sessions
+Running migrations:
+  Applying pybo.0001_initial... OK
+
+(django_env) c:\projects\mysite>
+~~~
+
+이후 SQL을 보게되면 테이블이 생성되었는 것을 확인할 수 있다.
+
+Question 모델 : pybo_question
+
+Answer 모델 : pybo_answer
+
+-> 위와 같이 생성된 것을 볼 수 있다.
+
+---
