@@ -315,7 +315,11 @@ __python manage.py shell__
 >>> q.save()
 ~~~
 
-Question 모델의 create_date 속성은 DateTimeField 타입이므로 timezone.now()로 현재일시 대입한다.
+Question 모델의 subject 속성 : 제목 입력
+
+Question 모델의 content 속성 : 문자열로 질문 내용 입력
+
+Question 모델의 create_date 속성 : DateTimeField 타입이므로 timezone.now()로 현재일시 대입한다.
 
 위처럼 Question모델의 객체 q를 생성한 후 save함수를 실행하면 질문 데이터가 1건 생성된다.
 
