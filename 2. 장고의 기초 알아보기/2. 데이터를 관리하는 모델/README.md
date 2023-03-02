@@ -295,6 +295,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 (InteractiveConsole)
 >>>
 ~~~
+__python manage.py shell__
 
 일반적인 파이썬 셸을 실행하는 것이 아니라, 장고에 필요한 환경들이 자동으로 설정된 장고 셸이 실행된다.
 
@@ -339,3 +340,23 @@ Question 모델의 create_date 속성은 DateTimeField 타입이므로 timezone.
 ~~~
 
 두번째로 생성한 질문의 id는 예상대로 2라는 것을 알 수 있다.
+
+---
+
+### 3. 데이터 조회
+
+이번에는 저장한 데이터를 조회 해보자.
+
+~~~
+>>> Question.objects.all()
+<QuerySet [<Question: Question object (1)>, <Question: Question object (2)>]>
+~~~
+__Question.objects.all()__ : 모든 Question 데이터를 조회하는 함수
+
+Question모델의 데이터는 __Question.objects.all()__ 을 통해서 조회할 수 있다.
+
+결과 값 : QuerySet객체가 리턴되는데 위처럼 Question 객체를 포함
+
+Question object(1) : 1은 Question 데이터의 id값
+
+Question object(2) : 2는 Question 데이터의 id값
