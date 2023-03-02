@@ -283,3 +283,59 @@ Answer 모델 : pybo_answer
 -> 위와 같이 생성된 것을 볼 수 있다.
 
 ---
+
+## 데이터 저장 / 조회 / 수정 / 삭제
+
+### 1. 장고셸 실행하기(모델 사용하기)
+
+~~~
+(django_env) c:\projects\mysite> python manage.py shell
+Python 3.9.6 (tags/v3.9.6:db3ff76, Jun 28 2021, 15:26:21) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>>
+~~~
+
+일반적인 파이썬 셸을 실행하는 것이 아니라, 장고에 필요한 환경들이 자동으로 설정된 장고 셸이 실행된다.
+
+### 2. Questions 모델로 Questions 모델 데이터 만들기
+
+#### Question과 Answer 모델은 장고 셸에서 다음처럼 import하여 사용하기
+
+~~~
+>>> from pybo.models import Question, Answer
+~~~
+
+#### Question 모델을 이용하여 질문 데이터를 만들어 보자.
+
+~~~
+>>> from django.utils import timezone
+>>> q = Question(subject='pybo가 무엇인가요?', content='pybo에 대해서 알고 싶습니다.', create_date=timezone.now())
+>>> q.save()
+~~~
+
+Question 모델의 create_date 속성은 DateTimeField 타입이므로 timezone.now()로 현재일시 대입한다.
+
+위처럼 Question모델의 객체 q를 생성한 후 save함수를 실행하면 질문 데이터가 1건 생성된다.
+
+~~~
+>>q.id
+1
+~~~
+
+> id : 모델 데이터의 유일한 값, 프라이머리 키(PK : Primary Key)
+
+데이터가 1건 생성되면 반드시 다음처럼 id값이 생성된다.
+
+이 id 값은 데이터를 생성할때마다 1씩 증가된다.
+
+그러면 두번째 질문을 만들어보자.
+
+~~~
+>>> q = Question(subject='장고 모델 질문입니다.', content='id는 자동으로 생성되나요?', create_date=timezone.now())
+>>> q.save()
+>>> q.id
+2
+~~~
+
+두번째로 생성한 질문의 id는 예상대로 2라는 것을 알 수 있다.
