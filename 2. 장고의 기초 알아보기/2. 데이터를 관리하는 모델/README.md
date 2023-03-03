@@ -365,7 +365,7 @@ Question object(1) : 1은 Question 데이터의 id값
 
 Question object(2) : 2는 Question 데이터의 id값
 
-#### 모델 데이터 조회 결과에 속성값 보여주기
+### 모델 데이터 조회 결과에 속성값 보여주기
 
 projects/mysite/pybo/models.py
 
@@ -397,3 +397,67 @@ class Question(models.Model):
 <QuerySet [<Question: pybo가 무엇인가요?>, <Question: 장고 모델 질문입니다.>]>
 >>>
 ~~~
+id 값 (1과 2)대신 제목으로 표시되는 것을 확인할 수 있다.
+
+모델에 메서드가 추가될 경우에는 makemigrations와 migrate를 수행할 필요가 없다.
+
+> __makemigrations와 migrate 명령이 필요한 경우?__ 모델의 속성이 변경 되었을때 뿐이다.
+
+### filter사용
+
+이번에는 filter를 사용하여 id 값이 1인 Question 데이터를 조회해보자
+
+__filter__ 는 조건에 해당되는 __데이터를 모두__ 리턴해주기 때문에 다건을 의미하는 QuerySet이 리턴된다.
+
+~~~
+>>> Question.objects.filter(id=1)
+<QuerySet [<Question: pybo가 무엇인가요?>]>
+~~~
+
+"특정문자열"이 포함된 데이터를 조회하기
+
+ex) subject__contains='장고' : 'subject 속성'에 '장고'라는 문자열이 포함되어 있는가?
+
+~~~
+>>> Question.objects.filter(subject__contains='장고')
+<QuerySet [<Question: 장고 모델 질문입니다.>]>
+~~~
+
+조건에 맞지 않는 데이터 조회하기
+
+~~~
+>>> Question.objects.filter(id=3)
+<QuerySet []>
+~~~
+
+filter 함수는 조건에 맞는 데이터가 없으면 빈 QuerySet이 반환된다.
+
+id는 유일한 값이므로 filter 대신 get을 이용하여 조회할 수 도 있다.
+
+### get 사용 (1건의 데이터를 조회할 때 사용)
+
+id와 같은 유일한 값으로 조회할 경우에만 사용
+
+~~~
+>>> Question.objects.get(id=1)
+<Question: pybo가 무엇인가요?>
+~~~
+
+조건에 맞지 않는 데이터 조회하기
+
+~~~
+>>> Question.objects.get(id=3)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\venvs\mysite\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\venvs\mysite\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+pybo.models.Question.DoesNotExist: Question matching query does not exist.
+~~~
+
+get함수는 반드시 1건의 데이터를 반환해야 한다는 특징이 있다. 그렇기 때문에 오류가 뜨는 것이다.
+
+---
+
+## 4. 데이터 수정하기
