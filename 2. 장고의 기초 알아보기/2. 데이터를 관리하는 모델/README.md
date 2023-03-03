@@ -364,3 +364,36 @@ Question모델의 데이터는 __Question.objects.all()__ 을 통해서 조회�
 Question object(1) : 1은 Question 데이터의 id값
 
 Question object(2) : 2는 Question 데이터의 id값
+
+#### 모델 데이터 조회 결과에 속성값 보여주기
+
+projects/mysite/pybo/models.py
+
+~~~python
+(... 생략 ...)
+
+class Question(models.Model):
+    subject = models.CharField(max_length=200)
+    content = models.TextField()
+    create_date = models.DateTimeField()
+
+# 수정 사항
+    def __str__(self):
+        return self.subject
+
+(... 생략 ...)
+~~~
+
+이렇게 수정하고 Question.objects.all() 함수를 다시 실행하기전,
+
+> 모델이 변경되었으므로 장고 셸을 재시작해야한다.
+
+> 장고 셸을 종료하는 방법은 quit() 혹은 Ctrl+z 입력하면 된다.
+
+~~~
+(django_env) c:\projects\mysite>python manage.py shell
+>>> from pybo.models import Question, Answer
+>>> Question.objects.all()
+<QuerySet [<Question: pybo가 무엇인가요?>, <Question: 장고 모델 질문입니다.>]>
+>>>
+~~~
