@@ -11,6 +11,9 @@ class Question(models.Model):
     # 작성일시
     create_date = models.DateTimeField()
 
+    def __str__(self):
+        return self.subject
+
 # Answer Model
 class Answer(models.Model):
     # 질문
