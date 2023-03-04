@@ -461,3 +461,105 @@ get함수는 반드시 1건의 데이터를 반환해야 한다는 특징이 있
 ---
 
 ## 4. 데이터 수정하기
+
+지금까지 저장했던 question 모델 데이터를 수정하자
+
+우선 수정하려면 수정할 데이터를 조회해야한다.
+
+예를들어 id값이 2인 데이터를 수정한다고 가정하자.
+
+~~~
+>>> q = Question.objects.get(id=2)
+>>> q
+<Question: 장고 모델 질문입니다.>
+~~~
+
+그리고 subject 속성을 다음과 같이 수정하자
+
+~~~
+>>> q.subject = 'Django Model Question'
+>>>
+~~~
+
+여기까지만 해서는 수정이 되지 않는다. 다음처럼 save를 수행해 주어야 변경된 데이터가 반영된다는 것을 꼭 기억하자.
+
+~~~
+>>> q.save()
+>>> q
+<Question: Django Model Question>
+~~~
+
+## 5. 데이터 삭제
+
+이번은 id 값이 1인 Question 데이터를 삭제해보자
+
+~~~
+>>> q = Question.objects.get(id=1)
+>>> q.delete()
+(1, {'pybo.Question': 1})
+~~~
+
+> delete 수행시 해당 데이터가 삭제되면 추가 정보가 return 된다.
+
+이후 삭제되었는지 조회해보자
+
+~~~
+>>> Question.objects.all()
+<QuerySet [<Question: Django Model Question>]>
+~~~
+
+첫번째 질문은 삭제되고 두번째 질문만 조회되는 것을 확인할 수 있다.
+
+---
+
+## 6. 연결된 데이터 알아보기
+
+Answer 모델을 만들때 Foreign Key로 Question모델과 연결한 내용이 기억나는가?
+
+Answer 모델은 Question 모델과 연결되어 있다.
+
+-> 이 뜻은 Answer 모델은 데이터를 만들 때 Question 모델 데이터가 필요하다.
+
+그럼 지금부터 Answer 모델의 데이터를 만들어보자.
+
+#### 1. Answer 모델 데이터 만들기
+
+~~~
+>>> q = Question.objects.get(id=2)
+>>> q
+<Question: Django Model Question>
+>>> from django.utils import timezone
+>>> a = Answer(question=q, content='네 자동으로 생성됩니다.', create_date=timezone.now())
+>>> a.save()
+~~~
+
+답변 데이터를 만들기 위해 질문이 필요하므로 id가 2인 Question을 조회한후 question 속성에 대입해 주었다.
+
+Answer 모델도 Question 모델과 같이 유일한 값을 의미하는 id가 자동으로 생성된다.
+
+#### 2. 연결된 데이터로 조회하기 : 답변에 있는 질문 조회하기
+
+Answer 객체인 a를 사용하면 답변에 연결된 질문도 조회할 수 있다.
+
+~~~
+>>> a.question
+<Question: Django Model Question>
+~~~
+
+#### 3. 연결된 데이터로 조회하기 : 질문을 통해 답변찾기
+~~~
+>>> q.answer_set.all()
+<QuerySet [<Answer: Answer object (1)>]>
+~~~
+
+질문과 답변이 달리는 게시판을 상식적으로 생각해보자.
+
+질문 1개에는 1개 이상의 답변이 달릴 수 있으므로 질문에 달린 답변은 q.answer_set 으로 조회해야한다.
+
+답변은 질문 1개에 대한 것이므로 애초에 여러개의 질문을 조회할 수 없다.
+
+그렇기에 q.answer 만 실행할 수 있다.
+
+반대로 a.question_set으로 조회하는 것은 불가능하다. __그 이유는? 1개의 답변에 여러개의 질문이 있는 것이 아니니까__
+
+__연결모델_set__는 자주사용하는 기능이니 꼭 기억하자.
