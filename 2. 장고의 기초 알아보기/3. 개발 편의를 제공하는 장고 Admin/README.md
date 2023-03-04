@@ -3,7 +3,7 @@
 장고(Django)가 기본적으로 제공하는관리자 페이제에 로그인하기 위해서는 superuser를 만들 필요가 있다.
 
 ---
-# 슈퍼 유저 생성하기
+## 슈퍼 유저 생성하기
 
 슈퍼 유저 생성 : python manage.py createsuperuser
 
@@ -33,7 +33,7 @@ Superuser created successfully.
 > 실제 운영환경에서는 이렇게 보안에 취약한 비밀번호를 사용하면 안된다.
 
 ---
-# 장고 관리자 화면
+## 장고 관리자 화면
 
 슈퍼유저가 생성되었으니 로컬 서버를 구동한 후 http://localhost:8000/admin/ 페이지에 접속해보자
 
@@ -45,3 +45,12 @@ Superuser created successfully.
 ![image](https://user-images.githubusercontent.com/54052704/222899868-f6c35233-4da1-4fd4-872f-cb9a3eb4ed13.png)
 
 이러한 화면이 뜰 것이다.
+
+그리고 위와 같이 사용자 이름과 PassWord를 입력하면
+
+![image](https://user-images.githubusercontent.com/54052704/222899952-888fa395-2106-43ea-8d90-51a2f642d141.png)
+
+위와 같은 이미지가 뜬다.
+
+---
+## 모델관리
