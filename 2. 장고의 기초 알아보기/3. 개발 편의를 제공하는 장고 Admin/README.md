@@ -37,4 +37,11 @@ Superuser created successfully.
 
 슈퍼유저가 생성되었으니 로컬 서버를 구동한 후 http://localhost:8000/admin/ 페이지에 접속해보자
 
-![image](https://user-images.githubusercontent.com/54052704/222899811-dd2fd4e9-6316-4b0a-a6d4-de9c30f5662e.png)
+접속 방법
+~~~
+(django_env) c:\projects\mysite> python manage.py runserver
+~~~
+
+![image](https://user-images.githubusercontent.com/54052704/222899868-f6c35233-4da1-4fd4-872f-cb9a3eb4ed13.png)
+
+이러한 화면이 뜰 것이다.
