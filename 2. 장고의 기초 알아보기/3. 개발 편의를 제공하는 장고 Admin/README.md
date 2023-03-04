@@ -36,3 +36,5 @@ Superuser created successfully.
 # 장고 관리자 화면
 
 슈퍼유저가 생성되었으니 로컬 서버를 구동한 후 http://localhost:8000/admin/ 페이지에 접속해보자
+
+![image](https://user-images.githubusercontent.com/54052704/222899811-dd2fd4e9-6316-4b0a-a6d4-de9c30f5662e.png)
