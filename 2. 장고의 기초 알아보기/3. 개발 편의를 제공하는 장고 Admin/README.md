@@ -64,7 +64,40 @@ Superuser created successfully.
 from djnago.contrib import admin
 from .models import Question
 
-admin.size.register(Question)
+admin.site.register(Question) #추가 사항
 ~~~
 
 위 코드를 입력하게되면 Question 모델을 장고 Admin에 등록하는 것이 된다.
+
+이후 새로고침을 하게 되면
+
+![image](https://user-images.githubusercontent.com/54052704/222960584-c69db229-e05f-49b0-8b88-98ba9884efce.png)
+
+---
+## Question 모델 데이터 추가하기
+
+화면에서 Question 모델의 <+추가> 버튼을 누르면 Question 모델의 데이터 등록화면이 나타난다.
+
+이어서 Question 모델의 속성에 맞는 값을 입력하고 <저장> 버튼을 누르면 Question 모델 데이터가 추가된다.
+
+![image](https://user-images.githubusercontent.com/54052704/222960762-05867264-cac5-409a-8e71-e3a588ebdcc8.png)
+
+---
+## 장고 Admin에 데이터 검색 기능 추가하기
+
+장고 Admin에서 제목으로 질문을 검색할 수 있도록 항목을 추가하자.
+
+pybo/admin.py 파일에 QuestionAdmin 클래스를 추가하고 search_fields에 'subject'를 추가하자
+
+[파일 : C:/projects/mysite/pybo/admin.py]
+~~~python
+from django.contrib import admin
+from .models import Question
+
+# 추가 사항
+class QuestionAdmin(admin.ModelAdmin):
+    search_fileds = ['subject']
+
+# 변경 사항
+admin.site.register(Question, QuestionAdmin)
+~~~
