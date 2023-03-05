@@ -96,7 +96,7 @@ from .models import Question
 
 # 추가 사항
 class QuestionAdmin(admin.ModelAdmin):
-    search_fileds = ['subject']
+    search_fields = ['subject']
 
 # 변경 사항
 admin.site.register(Question, QuestionAdmin)
