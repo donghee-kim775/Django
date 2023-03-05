@@ -101,3 +101,9 @@ class QuestionAdmin(admin.ModelAdmin):
 # 변경 사항
 admin.site.register(Question, QuestionAdmin)
 ~~~
+
+새로고침을 하면 밑과 같은 화면이 나타난다.
+
+![image](https://user-images.githubusercontent.com/54052704/222961143-33fd3241-cc37-4c8a-83c7-011d7553c1af.png)
+
+ 검색어로 '장고'로 입력하고 <검색>을 눌러보면 제목에 '장고'가 포함된 Question 모델 데이터만 조회된다.
