@@ -54,3 +54,17 @@ Superuser created successfully.
 
 ---
 ## 모델관리
+
+우리는 Question, Answer 모델을 만들었다. 이 모델들을 장고 Admin에 등록하면 손쉽게 모델을 관리할 수 있다.
+
+-> 이말은 쉽게 말해 장고셸로 수행했던 데이터 저장, 수정, 삭제 등의 작업을 장고 Admin에서 할 수 있다.
+
+[파일 : C:/projects/mysite/pybo/admin.py]
+~~~python
+from djnago.contrib import admin
+from .models import Question
+
+admin.size.register(Question)
+~~~
+
+위 코드를 입력하게되면 Question 모델을 장고 Admin에 등록하는 것이 된다.
