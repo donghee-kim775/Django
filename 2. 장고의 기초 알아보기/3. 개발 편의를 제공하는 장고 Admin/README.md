@@ -54,3 +54,56 @@ Superuser created successfully.
 
 ---
 ## 모델관리
+
+우리는 Question, Answer 모델을 만들었다. 이 모델들을 장고 Admin에 등록하면 손쉽게 모델을 관리할 수 있다.
+
+-> 이말은 쉽게 말해 장고셸로 수행했던 데이터 저장, 수정, 삭제 등의 작업을 장고 Admin에서 할 수 있다.
+
+[파일 : C:/projects/mysite/pybo/admin.py]
+~~~python
+from djnago.contrib import admin
+from .models import Question
+
+admin.site.register(Question) #추가 사항
+~~~
+
+위 코드를 입력하게되면 Question 모델을 장고 Admin에 등록하는 것이 된다.
+
+이후 새로고침을 하게 되면
+
+![image](https://user-images.githubusercontent.com/54052704/222960584-c69db229-e05f-49b0-8b88-98ba9884efce.png)
+
+---
+## Question 모델 데이터 추가하기
+
+화면에서 Question 모델의 <+추가> 버튼을 누르면 Question 모델의 데이터 등록화면이 나타난다.
+
+이어서 Question 모델의 속성에 맞는 값을 입력하고 <저장> 버튼을 누르면 Question 모델 데이터가 추가된다.
+
+![image](https://user-images.githubusercontent.com/54052704/222960762-05867264-cac5-409a-8e71-e3a588ebdcc8.png)
+
+---
+## 장고 Admin에 데이터 검색 기능 추가하기
+
+장고 Admin에서 __제목__ 으로 __질문__ 을 검색할 수 있도록 항목을 추가하자.
+
+pybo/admin.py 파일에 QuestionAdmin 클래스를 추가하고 __search_fields__ 에 __'subject'__ 를 추가하자
+
+[파일 : C:/projects/mysite/pybo/admin.py]
+~~~python
+from django.contrib import admin
+from .models import Question
+
+# 추가 사항
+class QuestionAdmin(admin.ModelAdmin):
+    search_fields = ['subject']
+
+# 변경 사항
+admin.site.register(Question, QuestionAdmin)
+~~~
+
+새로고침을 하면 밑과 같은 화면이 나타난다.
+
+![image](https://user-images.githubusercontent.com/54052704/222961143-33fd3241-cc37-4c8a-83c7-011d7553c1af.png)
+
+ 검색어로 '장고'로 입력하고 <검색>을 눌러보면 제목에 '장고'가 포함된 Question 모델 데이터만 조회된다.
