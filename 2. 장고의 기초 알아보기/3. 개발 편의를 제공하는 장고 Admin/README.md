@@ -87,7 +87,7 @@ admin.site.register(Question) #추가 사항
 
 장고 Admin에서 __제목__ 으로 __질문__ 을 검색할 수 있도록 항목을 추가하자.
 
-pybo/admin.py 파일에 QuestionAdmin 클래스를 추가하고 __search_fields__ 에 __'subject'__ 를 추가하자
+pybo/admin.py 파일에 QuestionAdmin 클래스를 추가하고 __search_fields__ 에 __'subject'__ 를 추가하자.
 
 [파일 : C:/projects/mysite/pybo/admin.py]
 ~~~python
